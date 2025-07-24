@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const recipe = require("./models/Recipe")
 
 async function connectToDB() {
     try {
@@ -10,30 +11,7 @@ async function connectToDB() {
 }
 connectToDB()
 
-const recipeSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    ingredients: [String],
-    instructions: {
-        type: String,
-        required: false
-    },
-    prepTime: {
-        type: Number,
-        required: false
-    },
-    difficulty: {
-        type: [String],
-        enum: ['Easy', 'Hard', 'Medium'],
-        default: 'Easy'
 
-    }
-})
-
-//model 
-const recipe = mongoose.model("Recipe", recipeSchema)
 
 async function createRecipe(newRecipe) {
     try {
@@ -52,7 +30,7 @@ async function createRecipe(newRecipe) {
     }
 }
 
-createRecipe()
+// createRecipe()
 
 async function getAllRecipes() {
    try{
@@ -77,6 +55,7 @@ async function updateRecipe(recipeId, newRecipeData) {
     }
 }
 
+// updateRecipe("68821662514456fb1759081a",  { prepTime: 100 })
 
 async function deleteRecipe(recipeId) {
     try {
@@ -87,4 +66,4 @@ async function deleteRecipe(recipeId) {
     }
 }
 
-deleteRecipe('68808a716be8717f9161ceac')
+deleteRecipe('68821399419ed0602a5bfab0')
