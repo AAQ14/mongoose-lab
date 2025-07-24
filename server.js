@@ -1,9 +1,10 @@
 const mongoose = require("mongoose")
 const recipe = require("./models/Recipe")
+const dotenv = require("dotenv").config()
 
 async function connectToDB() {
     try {
-        await mongoose.connect("mongodb+srv://amna:R77-mmn@cluster0.r5cujz5.mongodb.net/recipesDB?retryWrites=true&w=majority&appName=Cluster0")
+        await mongoose.connect(process.env.MONGODB)
         console.log("connected to DB")
     } catch (err) {
         console.log("Error: Issue connecting to Database")
